@@ -18,9 +18,10 @@ body {
   margin-bottom: 20px;
 }
 
-.products {
+.products, #cart {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product {
@@ -29,6 +30,8 @@ body {
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin: 10px;
+  width: 30%;
 }
 
 button {
@@ -37,8 +40,29 @@ button {
   border: none;
   padding: 10px 15px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
   background: #218838;
+}
+
+#cart {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 100%;
+}
+
+#cart-items {
+  list-style: none;
+  padding: 0;
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
 }
