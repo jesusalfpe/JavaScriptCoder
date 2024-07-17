@@ -1,14 +1,9 @@
 let saldoInicial = 0;
 let saldoRestante = 0;
 let carrito = [];
+let products = [];
 
-const products = [
-    { id: 1, name: "Producto 1", price: 10 },
-    { id: 2, name: "Producto 2", price: 20 },
-    { id: 3, name: "Producto 3", price: 30 }
-];
-
-window.onload = () => {
+window.onload = async () => {
     while (true) {
         saldoInicial = parseFloat(prompt("Ingrese el saldo inicial de la tarjeta:"));
         if (!isNaN(saldoInicial) && saldoInicial > 0) {
@@ -20,8 +15,19 @@ window.onload = () => {
     }
     document.getElementById('saldo-inicial').textContent = saldoInicial.toFixed(2);
     document.getElementById('saldo-restante').textContent = saldoRestante.toFixed(2);
+    
+    await loadProducts();
     displayProducts();
 };
+
+async function loadProducts() {
+    try {
+        const response = await fetch('productos.json');
+        products = await response.json();
+    } catch (error) {
+        console.error('Error cargando productos:', error);
+    }
+}
 
 function displayProducts() {
     const productsContainer = document.getElementById('products');
